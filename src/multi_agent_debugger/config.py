@@ -43,6 +43,12 @@ class Settings(BaseSettings):
         default="multi_agent_debugger",
         description="Mongo database name. Kept separate from sibling projects.",
     )
+    mongo_timeout_ms: int = Field(
+        default=5000,
+        ge=500,
+        le=60000,
+        description="Server selection timeout for MongoDB in milliseconds.",
+    )
 
     # --- LLM --------------------------------------------------------------
     llm_model: str = Field(
